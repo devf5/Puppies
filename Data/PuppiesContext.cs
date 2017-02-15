@@ -21,6 +21,8 @@ namespace Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
@@ -37,8 +39,6 @@ namespace Data
             modelBuilder.Entity<Sessao>().Property(s => s.UltimoAcesso).IsRequired();
             modelBuilder.Entity<Sessao>().Property(s => s.UltimoIP).HasMaxLength(50).IsRequired();
             modelBuilder.Entity<Sessao>().HasRequired(s => s.Usuario).WithMany(u => u.Sessoes).HasForeignKey(s => s.UsuarioID);
-
-            base.OnModelCreating(modelBuilder);
         }
     }
 }
