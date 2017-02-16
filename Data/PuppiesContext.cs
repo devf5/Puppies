@@ -9,13 +9,18 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    public class PuppiesContext : DbContext
+    public class PuppiesContext : DbContext, IDisposable
     {
         public PuppiesContext() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
         {
 
         }
 
+        new public void Dispose()
+        {
+            base.Dispose(true);
+        }
+        
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Sessao> Sessoes { get; set; }
 

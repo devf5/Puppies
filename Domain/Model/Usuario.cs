@@ -14,18 +14,8 @@ namespace Domain.Model
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
         public string Email { get; set; }
-        public string Senha
-        {
-            get
-            {
-                return Senha;
-            }
-
-            set
-            {
-                Senha = Seguranca.Hash(value);
-            }
-        }
+        public string Senha { get; private set; }
+      
 
         public virtual ICollection<Sessao> Sessoes { get; set; }
 
@@ -40,7 +30,7 @@ namespace Domain.Model
             this.Nome = nome;
             this.Sobrenome = sobrenome;
             this.Email = email;
-            this.Senha = senha;
+            this.Senha = Seguranca.Hash(senha);
         }
 
         public bool ValidaLogin(string email, string senha)
