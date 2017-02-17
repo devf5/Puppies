@@ -11,7 +11,10 @@ namespace Data
 {
     public class PuppiesContext : DbContext, IDisposable
     {
-        public PuppiesContext() : base(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+        private const string local = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private const string azure = @"Server=tcp:devf5.database.windows.net,1433;Initial Catalog=puppies;Persist Security Info=False;User ID=admindevf5;Password=Devf5@Desenv;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+
+        public PuppiesContext() : base(azure)
         {
 
         }

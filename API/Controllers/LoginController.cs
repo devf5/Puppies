@@ -37,9 +37,13 @@ namespace API.Controllers
         }
 
         // GET: api/Login/5
-        public string Get(int id)
+        public IHttpActionResult Get(Guid id)
         {
-            return "value";
+            var sessao =  _db.Sessoes.Find(id);
+            if (sessao == null)
+                return NotFound();
+
+            return Ok(sessao);
         }
 
         // POST: api/Login
@@ -47,9 +51,10 @@ namespace API.Controllers
         public IHttpActionResult Post([FromBody]UsuarioCadastro obj)
         {
             if (!ModelState.IsValid)
-            {
                 return BadRequest(ModelState);
-            }
+
+            if (_db.Usuarios.Any(u => u.Email == obj.Email))
+                return BadRequest("Email já cadastrado");
 
             var usuario = new Usuario(obj.Nome, obj.Sobrenome, obj.Email, obj.Senha);
             _db.Usuarios.Add(usuario);
