@@ -41,6 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\EDispositivo.cs" />
+    <Compile Include="Enums\ESexoCao.cs" />
+    <Compile Include="Enums\ESexoUsuario.cs" />
+    <Compile Include="Enums\ETipoMidia.cs" />
+    <Compile Include="Model\Cao.cs" />
+    <Compile Include="Model\Midia.cs" />
+    <Compile Include="Model\Raca.cs" />
     <Compile Include="Model\Sessao.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

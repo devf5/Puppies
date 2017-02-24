@@ -100,6 +100,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="ModelViews\Usuario\UsuarioCadastro.cs" />
+    <Compile Include="ModelViews\Usuario\UsuarioSessao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

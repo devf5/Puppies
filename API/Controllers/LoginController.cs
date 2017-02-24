@@ -33,7 +33,7 @@ namespace API.Controllers
             _db.Sessoes.Add(sessao);
             _db.SaveChanges();
 
-            return Ok(sessao);
+            return Ok(new UsuarioSessao(sessao));
         }
 
         // GET: api/Login/5

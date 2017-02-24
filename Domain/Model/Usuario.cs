@@ -15,7 +15,7 @@ namespace Domain.Model
         public string Sobrenome { get; set; }
         public string Email { get; set; }
         public string Senha { get; private set; }
-      
+        public byte[] Foto { get; set; }
 
         public virtual ICollection<Sessao> Sessoes { get; set; }
 
