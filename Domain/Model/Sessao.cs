@@ -21,7 +21,7 @@ namespace Domain.Model
 
         public virtual Usuario Usuario { get; private set; }
 
-        protected Sessao() { }
+        private Sessao() { }
         public Sessao(Usuario usuario, EDispositivo dispositivo, string ip)
         {
             this.ID = Guid.NewGuid();

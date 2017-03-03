@@ -56,7 +56,7 @@ namespace API.Controllers
             if (_db.Usuarios.Any(u => u.Email == obj.Email))
                 return BadRequest("Email já cadastrado");
 
-            var usuario = new Usuario(obj.Nome, obj.Sobrenome, obj.Email, obj.Senha);
+            var usuario = new Usuario(obj.Nome, obj.Email, obj.Senha);
             _db.Usuarios.Add(usuario);
             _db.SaveChanges();
 

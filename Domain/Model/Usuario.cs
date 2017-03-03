@@ -9,26 +9,26 @@ namespace Domain.Model
 {
     public class Usuario
     {
-        public int ID { get; set; }
+        public int ID { get; private set; }
 
         public string Nome { get; set; }
-        public string Sobrenome { get; set; }
         public string Email { get; set; }
         public string Senha { get; private set; }
         public byte[] Foto { get; set; }
 
         public virtual ICollection<Sessao> Sessoes { get; set; }
+        public virtual ICollection<Cao> Caes { get; set; }
 
-        protected Usuario()
+        private Usuario()
         {
             this.Sessoes = new HashSet<Sessao>();
+            this.Caes = new HashSet<Cao>();
         }
 
-        public Usuario(string nome, string sobrenome, string email, string senha)
+        public Usuario(string nome, string email, string senha)
             : base()
         {
             this.Nome = nome;
-            this.Sobrenome = sobrenome;
             this.Email = email;
             this.Senha = Seguranca.Hash(senha);
         }

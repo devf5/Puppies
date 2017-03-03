@@ -14,9 +14,16 @@ namespace Domain.Model
         public string Extensao { get; private set; }
         public ETipoMidia Tipo { get; private set; }
 
-        protected Midia()
+        private Midia()
         {
 
+        }
+
+        public Midia(byte[] arquivo, string extensao, ETipoMidia tipo) : base()
+        {
+            this.Arquivo = arquivo;
+            this.Extensao = extensao;
+            this.Tipo = tipo;
         }
     }
 }

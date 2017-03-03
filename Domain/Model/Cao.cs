@@ -14,25 +14,25 @@ namespace Domain.Model
         public int UsuarioID { get; private set; }
 
         public string Nome { get; set; }
-        public string Sobrenome { get; set; }
-        public ESexoCao Sexo { get; set; }
-        public bool Pedigree { get; set; }
+        public ESexoCao Sexo { get; private set; }
+        public bool Pedigree { get; private set; }
         public bool TeveFilhotes { get; set; }
         public DateTime DataNascimento { get; set; }
         public DateTime DataCadastro { get; private set; }
 
         public virtual Raca Raca { get; private set; }
         public virtual Usuario Usuario { get; private set; }
+        public virtual ICollection<Midia> Midias { get; private set; }
 
-        protected Cao()
+        private Cao()
         {
+            this.Midias = new HashSet<Midia>();
             this.DataCadastro = DateTime.Now;
         }
 
-        public Cao(string nome, string sobrenome, bool pedigree, bool teveFilhotes, DateTime dataNascimento, Usuario usuario, Raca raca) : base()
+        public Cao(string nome, bool pedigree, bool teveFilhotes, DateTime dataNascimento, Usuario usuario, Raca raca) : base()
         {
             this.Nome = nome;
-            this.Sobrenome = sobrenome;
             this.Pedigree = pedigree;
             this.TeveFilhotes = teveFilhotes;
             this.DataNascimento = this.DataNascimento;
