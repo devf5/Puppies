@@ -45,6 +45,8 @@
     <Compile Include="Enums\ESexoUsuario.cs" />
     <Compile Include="Enums\ETipoMidia.cs" />
     <Compile Include="Model\Cao.cs" />
+    <Compile Include="Model\Cidade.cs" />
+    <Compile Include="Model\Estado.cs" />
     <Compile Include="Model\Midia.cs" />
     <Compile Include="Model\Raca.cs" />
     <Compile Include="Model\Sessao.cs" />

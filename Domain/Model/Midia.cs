@@ -10,20 +10,21 @@ namespace Domain.Model
     public class Midia
     {
         public int ID { get; private set; }
+        public int CaoID { get; private set; }
         public byte[] Arquivo { get; private set; }
         public string Extensao { get; private set; }
         public ETipoMidia Tipo { get; private set; }
 
-        private Midia()
-        {
+        public virtual Cao Cao { get; private set; }
 
-        }
+        private Midia() { }
 
-        public Midia(byte[] arquivo, string extensao, ETipoMidia tipo) : base()
+        public Midia(byte[] arquivo, string extensao, ETipoMidia tipo, Cao cao) : base()
         {
             this.Arquivo = arquivo;
             this.Extensao = extensao;
             this.Tipo = tipo;
+            this.Cao = cao;
         }
     }
 }

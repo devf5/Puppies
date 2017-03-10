@@ -12,9 +12,10 @@ namespace Data
     public class PuppiesContext : DbContext, IDisposable
     {
         private const string local = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Puppies;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-        private const string azure = @"Server=tcp:devf5.database.windows.net,1433;Initial Catalog=puppies;Persist Security Info=False;User ID=admindevf5;Password=Devf5@Desenv;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private const string azure = @"Server=tcp:devf5brasil.database.windows.net,1433;Initial Catalog=puppies;Persist Security Info=False;User ID=admindevf5;Password=Devf5@Desenv;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        //private const string azure = @"Server=tcp:devf5.database.windows.net,1433;Initial Catalog=puppies;Persist Security Info=False;User ID=admindevf5;Password=Devf5@Desenv;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
-        public PuppiesContext() : base(local)
+        public PuppiesContext() : base(azure)
         {
 
         }
@@ -69,6 +70,14 @@ namespace Data
             modelBuilder.Entity<Midia>().Property(m => m.Arquivo).IsRequired();
             modelBuilder.Entity<Midia>().Property(m => m.Extensao).HasMaxLength(10).IsRequired();
             modelBuilder.Entity<Midia>().Property(m => m.Tipo).IsRequired();
+            modelBuilder.Entity<Midia>().HasRequired(m => m.Cao).WithMany(c => c.Midias).HasForeignKey(m => m.CaoID);
+
+            modelBuilder.Entity<Estado>().HasKey(e => e.ID);
+            modelBuilder.Entity<Estado>().Property(e => e.Nome).HasMaxLength(25).IsRequired();
+
+            modelBuilder.Entity<Cidade>().HasKey(c => c.ID);
+            modelBuilder.Entity<Cidade>().Property(c => c.Nome).HasMaxLength(100).IsRequired();
+            modelBuilder.Entity<Cidade>().HasRequired(c => c.Estado).WithMany(e => e.Cidades).HasForeignKey(c => c.EstadoID);
 
 
         }

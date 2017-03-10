@@ -39,7 +39,7 @@ namespace API.Controllers
         // GET: api/Login/5
         public IHttpActionResult Get(Guid id)
         {
-            var sessao =  _db.Sessoes.Find(id);
+            var sessao = _db.Sessoes.Find(id);
             if (sessao == null)
                 return NotFound();
 
@@ -60,7 +60,12 @@ namespace API.Controllers
             _db.Usuarios.Add(usuario);
             _db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = usuario.ID }, usuario);
+            var sessao = new Sessao(usuario, obj.Dispositivo, HttpContext.Current.Request.UserHostAddress);
+
+            _db.Sessoes.Add(sessao);
+            _db.SaveChanges();
+
+            return Ok(new UsuarioSessao(sessao));
         }
     }
 }

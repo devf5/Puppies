@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Domain.Model
 {
     public class Raca
     {
         public int ID { get; private set; }
-        public string Nome { get; set; }
+        public string Nome { get; private set; }
 
         public virtual ICollection<Cao> Caes { get; set; }
 
@@ -18,7 +14,7 @@ namespace Domain.Model
             this.Caes = new HashSet<Cao>();
         }
 
-        public Raca(string nome):base()
+        public Raca(string nome) : base()
         {
             this.Nome = nome;
         }
